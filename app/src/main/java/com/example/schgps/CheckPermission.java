@@ -39,7 +39,7 @@ public class CheckPermission {
         }
     }
 
-
+ddddd
     public boolean requestAskPermission() {
         if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.M)
             return true;
