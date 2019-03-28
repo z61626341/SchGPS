@@ -65,7 +65,7 @@ public class GpsActivity extends AppCompatActivity implements LocationListener {
             e.printStackTrace();
         }
         openDB();
-        mSQLiteDB.insert(serialNo,deviceNo,tel,imei,0.0 ,0.0,getTime());
+        mSQLiteDB.insert(serialNo,deviceNo,tel,imei,0.0 ,0.0,getTime(),"No");
 
         if (checkPermission.requestAskPermission() && checkPermission.checkSelfPermission()) {//詢問是否開啟權限 && 判斷使用者權限開啟否
             if(!mLocationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER) && !mLocationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)){
@@ -134,7 +134,7 @@ public class GpsActivity extends AppCompatActivity implements LocationListener {
             }
             //寫入資料庫欄位資訊
             txt_imei.setText("經度 : " + location.getLongitude() + " 緯度 : " + location.getLatitude() +"\n更新時間 : " + getTime());
-            mSQLiteDB.insert(serialNo,deviceNo,tel,imei,location.getLongitude(),location.getLatitude(),getTime());
+            mSQLiteDB.insert(serialNo,deviceNo,tel,imei,location.getLongitude(),location.getLatitude(),getTime(),"No");
         }else{
             Log.i("(getLocation) 經緯度", "(getLocation) 尚未開啟定位服務" + " 時間 : " + getTime());
         }

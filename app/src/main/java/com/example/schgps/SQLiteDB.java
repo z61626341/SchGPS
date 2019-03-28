@@ -32,7 +32,9 @@ public class SQLiteDB extends SQLiteOpenHelper
                 + "imeiNo" + " varchar(128) , "
                 + "longitude" + " DECIMAL(16,8) , "
                 + "latitude" + " DECIMAL(16,8) , "
-                + "updatetime" + " date "+ ");";
+                + "updatetime" + " date "+ ", "
+                + "isApprove" + " varchar(20) "
+                + ") ;";
 
         db.execSQL(TABLE);
     }
@@ -49,7 +51,7 @@ public class SQLiteDB extends SQLiteOpenHelper
     {
         SQLiteDatabase db = this.getReadableDatabase();
 //        Cursor cursor = db.query(_TableName, null, null, null, null, null, null);
-        Cursor cursor = db.rawQuery("SELECT _id ,serialNo,deviceNo,telNo,imeiNo,longitude,latitude,updatetime FROM " + _TableName + " ORDER BY _id DESC ",null);
+        Cursor cursor = db.rawQuery("SELECT _id ,serialNo,deviceNo,telNo,imeiNo,longitude,latitude,updatetime,isApprove FROM " + _TableName + " ORDER BY _id DESC ",null);
         return cursor;
     }
     public Cursor select2()
@@ -69,7 +71,7 @@ public class SQLiteDB extends SQLiteOpenHelper
     }
 
     //新增db Table內容
-    public long insert(String serialNo,String deviceNo, String telNo, String imeiNo, Double longitude, Double latitude, String updatetime)
+    public long insert(String serialNo,String deviceNo, String telNo, String imeiNo, Double longitude, Double latitude, String updatetime,String isApprove)
     {
         SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd HH24:mm:ss");
         SQLiteDatabase db = this.getWritableDatabase();
@@ -81,6 +83,7 @@ public class SQLiteDB extends SQLiteOpenHelper
         cv.put("longitude", longitude);
         cv.put("latitude", latitude);
         cv.put("updatetime", updatetime);
+        cv.put("isApprove", isApprove);
         long row = db.insert(_TableName, null, cv);
         return row;
     }

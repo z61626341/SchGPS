@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
                 deviceNo = telIntent + imeiIntent;
                 IMEI = "手機電話 : " + telIntent + "\n" + "IMEI碼為 : " + mTelManager.getDeviceId();
             }
-            Toast.makeText(this,telIntent,Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this,telIntent,Toast.LENGTH_SHORT).show();
             tv_imei.setText(IMEI);
             bundle.putString("imei", imeiIntent);
             bundle.putString("tel", telIntent);
@@ -119,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
                     cursor.moveToFirst();
                     for(int i = 0; i < cursor.getCount(); i++){
 //                        Locations locations = new Locations("8869140656161551751970000","886914065616355090083243511","886914065616","Kelly",48.691412,62.941223,"2019/03/04");
-                        locations = new Locations(cursor.getString(1),cursor.getString(2),cursor.getString(3),cursor.getString(4),cursor.getDouble(5),cursor.getDouble(6),cursor.getString(7));
+                        locations = new Locations(cursor.getString(1),cursor.getString(2),cursor.getString(3),cursor.getString(4),cursor.getDouble(5),cursor.getDouble(6),cursor.getString(7),cursor.getString(8));
                         list_locations.add(locations);
                         cursor.moveToNext();
                     }
@@ -155,6 +155,8 @@ public class MainActivity extends AppCompatActivity {
                     String str_json = gson.toJson(list_locations);
                     okHttpConnection(str_json);
                 }
+                mSQLiteDB.deleteAll();
+                Toast.makeText(MainActivity.this,"Uploading your data...",Toast.LENGTH_SHORT).show();
             }
         });
     }

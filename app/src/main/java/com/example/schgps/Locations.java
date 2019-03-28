@@ -8,6 +8,8 @@ public class Locations {
     private double longitude;
     private double latitude;
     private String updateTime;
+    private String isApprove;
+
 
     public String getSerialNo() {
         return serialNo;
@@ -61,15 +63,22 @@ public class Locations {
         return updateTime;
     }
 
-
     public void setUpdateTime(String updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public String getIsApprove() {
+        return isApprove;
+    }
+
+    public void setIsApprove(String isApprove) {
+        this.isApprove = isApprove;
     }
 
     public void Locations(){
 
     }
-    public Locations(String serialNo,String deviceNo, String telNo, String imeiNo, double longitude, double latitude, String updateTime) {
+    public Locations(String serialNo,String deviceNo, String telNo, String imeiNo, double longitude, double latitude, String updateTime,String isApprove) {
         this.serialNo = serialNo;
         this.deviceNo = deviceNo;
         this.telNo = telNo;
@@ -77,5 +86,6 @@ public class Locations {
         this.longitude = longitude;
         this.latitude = latitude;
         this.updateTime = updateTime;
+        this.isApprove = isApprove;
     }
 }

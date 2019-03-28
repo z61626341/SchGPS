@@ -59,8 +59,8 @@
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
                 android:layout_weight="5"
-                android:background="@drawable/btn_stop"
-                android:text="@string/btn_stop" />
+                android:background="@drawable/btn_back"
+                android:text="@string/btn_back" />
 
             <Button
                 android:id="@+id/btn_delete"
